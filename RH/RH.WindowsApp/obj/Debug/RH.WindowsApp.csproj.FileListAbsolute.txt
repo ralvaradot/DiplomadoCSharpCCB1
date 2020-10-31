@@ -1,0 +1,10 @@
+E:\CCB\RH\RH.WindowsApp\bin\Debug\RH.WindowsApp.exe.config
+E:\CCB\RH\RH.WindowsApp\bin\Debug\RH.WindowsApp.exe
+E:\CCB\RH\RH.WindowsApp\bin\Debug\RH.WindowsApp.pdb
+E:\CCB\RH\RH.WindowsApp\obj\Debug\RH.WindowsApp.csprojAssemblyReference.cache
+E:\CCB\RH\RH.WindowsApp\obj\Debug\RH.WindowsApp.Properties.Resources.resources
+E:\CCB\RH\RH.WindowsApp\obj\Debug\RH.WindowsApp.csproj.GenerateResource.cache
+E:\CCB\RH\RH.WindowsApp\obj\Debug\RH.WindowsApp.csproj.CoreCompileInputs.cache
+E:\CCB\RH\RH.WindowsApp\obj\Debug\RH.WindowsApp.exe
+E:\CCB\RH\RH.WindowsApp\obj\Debug\RH.WindowsApp.pdb
+E:\CCB\RH\RH.WindowsApp\obj\Debug\RH.WindowsApp.Form1.resources
