@@ -1,4 +1,4 @@
-#Arquitectura N-Capas
+<h1>Arquitectura N-Capas</h1>
 
 En esta arquitectura de desarrollo de software se pretende que cada capa se encargue de una sola tarea, de esta manera, cuanod se necesite hacer una mdificacion o una actualizacion del software es mucho mas sencillo saber en dodne ir a buscar para adicionar o modificar el codigo a ingresar en la solucion.
 
