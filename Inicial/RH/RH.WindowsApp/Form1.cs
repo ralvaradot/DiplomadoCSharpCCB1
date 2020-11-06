@@ -1,5 +1,5 @@
 ﻿
-using RH.WindowsApp.Modelos;
+using RH.Entities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -22,6 +22,7 @@ namespace RH.WindowsApp
         {
             LlenarCiudades();
             LlenarValores();
+         
         }
 
         private void btnEmpleado_Click(object sender, EventArgs e)

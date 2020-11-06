@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RH.WindowsApp.Modelos
+namespace RH.Entities
 {
     public class Empleado
     {
@@ -21,3 +21,4 @@ namespace RH.WindowsApp.Modelos
         public Int64 Salario { get; set; }
     }
 }
+

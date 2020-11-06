@@ -18,3 +18,6 @@ E:\CCB\Inicial\RH\RH.WindowsApp\obj\Debug\RH.WindowsApp.csproj.GenerateResource.
 E:\CCB\Inicial\RH\RH.WindowsApp\obj\Debug\RH.WindowsApp.csproj.CoreCompileInputs.cache
 E:\CCB\Inicial\RH\RH.WindowsApp\obj\Debug\RH.WindowsApp.exe
 E:\CCB\Inicial\RH\RH.WindowsApp\obj\Debug\RH.WindowsApp.pdb
+E:\CCB\Inicial\RH\RH.WindowsApp\bin\Debug\RH.BusinessLogic.dll
+E:\CCB\Inicial\RH\RH.WindowsApp\bin\Debug\RH.BusinessLogic.pdb
+E:\CCB\Inicial\RH\RH.WindowsApp\obj\Debug\RH.WindowsApp.csproj.CopyComplete
