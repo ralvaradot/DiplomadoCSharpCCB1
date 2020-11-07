@@ -1,4 +1,5 @@
 ﻿
+using RH.BusinessLogic;
 using RH.Entities;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace RH.WindowsApp
         string[] ciudades;
         int[] valor;
         List<Empleado> empleados = new List<Empleado>();
+        EmpleadosBL empleadosBL = new EmpleadosBL();
 
         public Form1()
         {
@@ -106,10 +108,8 @@ namespace RH.WindowsApp
 
         private void LlenarEmpleados()
         {
-            empleados = new List<Empleado> {
-                new Empleado { Nombres="Jaime", Apellidos="Perez", Celular=3003435566, FechaNacimiento= new DateTime(1991,02,23), FechaIngreso=new DateTime(2000,03,23) },
-                new Empleado { Nombres="Jualian Enrique", Apellidos="Martinez", FechaIngreso=new DateTime(2015,06,30), FechaNacimiento=new DateTime(1973,12,30)}
-            };
+            // la UI solicita a BusinessLogic la lista de empleados
+            empleados = empleadosBL.DevolverListaEmpleados();
 
             dgvEmpleados.AutoGenerateColumns = false;
             dgvEmpleados.DataSource = empleados;
@@ -217,7 +217,13 @@ namespace RH.WindowsApp
                 FechaNacimiento = dateTimePicker1.Value
             };
 
-            empleados.Add(empleado);
+            int numeroRegistrosAfectados =  empleadosBL.AdicionarNuevoEmpleado(empleado);
+            if(numeroRegistrosAfectados == 0)
+            {
+                MessageBox.Show("Ocurrio un error y no se pudo adicionar el empleado.");
+                return;
+            }
+            empleados = empleadosBL.DevolverListaEmpleados();
 
             dgvEmpleados.DataSource = null;
             dgvEmpleados.DataSource = empleados;

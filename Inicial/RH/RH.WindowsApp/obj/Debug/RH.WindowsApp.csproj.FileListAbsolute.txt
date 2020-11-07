@@ -21,3 +21,7 @@ E:\CCB\Inicial\RH\RH.WindowsApp\obj\Debug\RH.WindowsApp.pdb
 E:\CCB\Inicial\RH\RH.WindowsApp\bin\Debug\RH.BusinessLogic.dll
 E:\CCB\Inicial\RH\RH.WindowsApp\bin\Debug\RH.BusinessLogic.pdb
 E:\CCB\Inicial\RH\RH.WindowsApp\obj\Debug\RH.WindowsApp.csproj.CopyComplete
+E:\CCB\Inicial\RH\RH.WindowsApp\bin\Debug\RH.Entities.dll
+E:\CCB\Inicial\RH\RH.WindowsApp\bin\Debug\RH.Entities.pdb
+E:\CCB\Inicial\RH\RH.WindowsApp\bin\Debug\RH.DataAccessLayer.dll
+E:\CCB\Inicial\RH\RH.WindowsApp\bin\Debug\RH.DataAccessLayer.pdb
