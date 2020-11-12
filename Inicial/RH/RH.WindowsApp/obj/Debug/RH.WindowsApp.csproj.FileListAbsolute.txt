@@ -25,3 +25,5 @@ E:\CCB\Inicial\RH\RH.WindowsApp\bin\Debug\RH.Entities.dll
 E:\CCB\Inicial\RH\RH.WindowsApp\bin\Debug\RH.Entities.pdb
 E:\CCB\Inicial\RH\RH.WindowsApp\bin\Debug\RH.DataAccessLayer.dll
 E:\CCB\Inicial\RH\RH.WindowsApp\bin\Debug\RH.DataAccessLayer.pdb
+E:\CCB\Inicial\RH\RH.WindowsApp\bin\Debug\RH.WindowsApp.exe.CodeAnalysisLog.xml
+E:\CCB\Inicial\RH\RH.WindowsApp\bin\Debug\RH.WindowsApp.exe.lastcodeanalysissucceeded
