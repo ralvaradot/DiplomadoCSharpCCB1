@@ -51,5 +51,12 @@ namespace RH.BusinessLogic
 
             return registrosAfectados;
         }
+
+        public List<Empleado> EmpleadosDesdeBD()
+        {
+            EmpleadosDAL empleadosDAL = new EmpleadosDAL();
+
+            return empleadosDAL.GetEmpleados();
+        }
     }
 }

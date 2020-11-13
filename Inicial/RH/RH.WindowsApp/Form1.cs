@@ -109,7 +109,9 @@ namespace RH.WindowsApp
         private void LlenarEmpleados()
         {
             // la UI solicita a BusinessLogic la lista de empleados
-            empleados = empleadosBL.DevolverListaEmpleados();
+            // empleados = empleadosBL.DevolverListaEmpleados();
+
+            empleados = empleadosBL.EmpleadosDesdeBD();
 
             dgvEmpleados.AutoGenerateColumns = false;
             dgvEmpleados.DataSource = empleados;

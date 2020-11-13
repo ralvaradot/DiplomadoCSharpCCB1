@@ -1,6 +1,7 @@
 ﻿using RH.Entities;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,8 @@ namespace RH.DataAccessLayer
     /// </summary>
     public class EmpleadosDAL
     {
+        #region  Manejo de Archivos 
+
         string path = @"E:\CCB\Inicial\RH\RH.WindowsApp\bin\Debug\Empleados.txt";
         public EmpleadosDAL()
         {
@@ -111,5 +114,45 @@ namespace RH.DataAccessLayer
 
             return empleados;
         }
+
+        #endregion
+
+        SQLDbManager db = new SQLDbManager();
+
+        public List<Empleado> GetEmpleados()
+        {
+            List<Empleado> Empleados = new List<Empleado>();
+
+            StringBuilder sbQuery = new StringBuilder();
+            // Esta es la sentencia SQL con le lenguaje de BAse de Datos
+            sbQuery.Append("SELECT " );
+            sbQuery.Append("Id, Nombres, Apellidos, ");
+            sbQuery.Append("FechaNAcimiento, TipoDocIdentificacion, ");
+            sbQuery.Append("NumDocIdentificacion, Celular, Salario  ");
+            sbQuery.Append("FROM Empleados ");
+
+            SqlDataReader reader = db.ReadData(sbQuery.ToString());
+
+            Empleado empleado = new Empleado();
+
+            while (reader.Read())
+            {
+                empleado = new Empleado()
+                {
+                    Apellidos = reader["Apellidos"].ToString(),
+                    Nombres = reader["Nombres"].ToString(),
+                    Celular = Convert.ToInt64(reader["Celular"]),
+                    Id = Convert.ToInt32(reader["Id"]),
+                    TipoDocIdentificacion = Convert.ToInt32(reader["TipoDocIdentificacion"]),
+                    NumDocIdentificacion = Convert.ToInt64(reader["NumDocIdentificacion"])
+                };
+
+                Empleados.Add(empleado);
+            }
+
+            reader.Close();
+            return Empleados;
+        }
+
     }
 }

@@ -1,11 +1,11 @@
 E:\CCB\Inicial\RH\RH.BusinessLogic\bin\Debug\RH.BusinessLogic.dll
 E:\CCB\Inicial\RH\RH.BusinessLogic\bin\Debug\RH.BusinessLogic.pdb
-E:\CCB\Inicial\RH\RH.BusinessLogic\obj\Debug\RH.BusinessLogic.csprojAssemblyReference.cache
-E:\CCB\Inicial\RH\RH.BusinessLogic\obj\Debug\RH.BusinessLogic.csproj.CoreCompileInputs.cache
-E:\CCB\Inicial\RH\RH.BusinessLogic\obj\Debug\RH.BusinessLogic.dll
-E:\CCB\Inicial\RH\RH.BusinessLogic\obj\Debug\RH.BusinessLogic.pdb
 E:\CCB\Inicial\RH\RH.BusinessLogic\bin\Debug\RH.DataAccessLayer.dll
 E:\CCB\Inicial\RH\RH.BusinessLogic\bin\Debug\RH.Entities.dll
 E:\CCB\Inicial\RH\RH.BusinessLogic\bin\Debug\RH.DataAccessLayer.pdb
 E:\CCB\Inicial\RH\RH.BusinessLogic\bin\Debug\RH.Entities.pdb
+E:\CCB\Inicial\RH\RH.BusinessLogic\obj\Debug\RH.BusinessLogic.csprojAssemblyReference.cache
+E:\CCB\Inicial\RH\RH.BusinessLogic\obj\Debug\RH.BusinessLogic.csproj.CoreCompileInputs.cache
 E:\CCB\Inicial\RH\RH.BusinessLogic\obj\Debug\RH.BusinessLogic.csproj.CopyComplete
+E:\CCB\Inicial\RH\RH.BusinessLogic\obj\Debug\RH.BusinessLogic.dll
+E:\CCB\Inicial\RH\RH.BusinessLogic\obj\Debug\RH.BusinessLogic.pdb

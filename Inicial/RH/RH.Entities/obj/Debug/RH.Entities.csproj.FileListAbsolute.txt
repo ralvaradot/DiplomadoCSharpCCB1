@@ -1,6 +1,5 @@
 E:\CCB\Inicial\RH\RH.Entities\bin\Debug\RH.Entities.dll
 E:\CCB\Inicial\RH\RH.Entities\bin\Debug\RH.Entities.pdb
-E:\CCB\Inicial\RH\RH.Entities\obj\Debug\RH.Entities.csprojAssemblyReference.cache
 E:\CCB\Inicial\RH\RH.Entities\obj\Debug\RH.Entities.csproj.CoreCompileInputs.cache
 E:\CCB\Inicial\RH\RH.Entities\obj\Debug\RH.Entities.dll
 E:\CCB\Inicial\RH\RH.Entities\obj\Debug\RH.Entities.pdb
