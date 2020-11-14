@@ -115,9 +115,76 @@ namespace RH.DataAccessLayer
             return empleados;
         }
 
+
         #endregion
 
         SQLDbManager db = new SQLDbManager();
+
+        public void DeleteEmpleado(long numeroIdentificacion)
+        {
+            StringBuilder sbQuery = new StringBuilder();
+            // Esta es la sentencia SQL con le lenguaje de BAse de Datos
+            sbQuery.Append("DELETE FROM  Empleados  ");
+            sbQuery.Append("WHERE  NumDocIdentificacion = " + numeroIdentificacion);
+
+             db.AddOrUpdate(sbQuery.ToString());
+        }
+
+        public int UpdateEmpleado(Empleado empleado)
+        {
+            StringBuilder sbQuery = new StringBuilder();
+            // Esta es la sentencia SQL con le lenguaje de BAse de Datos
+            sbQuery.Append("UPDATE Empleados SET ");
+            sbQuery.Append("Nombres = '" + empleado.Nombres  + "',  ");
+            sbQuery.Append("Apellidos = '" + empleado.Apellidos + "', ");
+            sbQuery.Append("FechaNAcimiento = '" + empleado.FechaNacimiento.ToString("yyyyMMdd") + "',  ");
+            sbQuery.Append("TipoDocIdentificacion = " + empleado.TipoDocIdentificacion + ", ");
+            sbQuery.Append("Celular = " + empleado.Celular + ",  ");
+            sbQuery.Append("FechaIngreso = '" + empleado.FechaIngreso.ToString("yyyyMMdd") + "' ");
+            sbQuery.Append("WHERE  NumDocIdentificacion = " + empleado.NumDocIdentificacion);
+
+            return db.AddOrUpdate(sbQuery.ToString());
+        }
+
+        public Empleado FindEmpleadoByIdentity(long docIdentificacion)
+        {
+            //List<Empleado> Empleados = new List<Empleado>();
+            //Empleados = GetEmpleados();
+            //return Empleados
+            //    .Where(e => e.NumDocIdentificacion == docIdentificacion)
+            //    .FirstOrDefault();
+
+            StringBuilder sbQuery = new StringBuilder();
+            // Esta es la sentencia SQL con le lenguaje de BAse de Datos
+            sbQuery.Append("SELECT ");
+            sbQuery.Append("Id, Nombres, Apellidos, ");
+            sbQuery.Append("FechaNAcimiento, TipoDocIdentificacion, ");
+            sbQuery.Append("NumDocIdentificacion, Celular, FechaIngreso  ");
+            sbQuery.Append("FROM Empleados ");
+            sbQuery.Append("WHERE  NumDocIdentificacion = " + docIdentificacion);
+
+            SqlDataReader reader = db.ReadData(sbQuery.ToString());
+
+            Empleado empleado = new Empleado();
+
+            while (reader.Read())
+            {
+                empleado = new Empleado()
+                {
+                    Apellidos = reader["Apellidos"].ToString(),
+                    Nombres = reader["Nombres"].ToString(),
+                    Celular = Convert.ToInt64(reader["Celular"]),
+                    Id = Convert.ToInt32(reader["Id"]),
+                    TipoDocIdentificacion = Convert.ToInt32(reader["TipoDocIdentificacion"]),
+                    NumDocIdentificacion = Convert.ToInt64(reader["NumDocIdentificacion"]),
+                    FechaIngreso = !DBNull.Value.Equals(reader["FechaIngreso"]) ? Convert.ToDateTime(reader["FechaIngreso"]) : DateTime.Now,
+                    FechaNacimiento = !DBNull.Value.Equals(reader["FechaNacimiento"]) ? Convert.ToDateTime(reader["FechaNacimiento"]) : DateTime.Now
+                };
+            }
+
+            reader.Close();
+            return empleado;
+        }
 
         public List<Empleado> GetEmpleados()
         {
@@ -125,7 +192,7 @@ namespace RH.DataAccessLayer
 
             StringBuilder sbQuery = new StringBuilder();
             // Esta es la sentencia SQL con le lenguaje de BAse de Datos
-            sbQuery.Append("SELECT " );
+            sbQuery.Append("SELECT ");
             sbQuery.Append("Id, Nombres, Apellidos, ");
             sbQuery.Append("FechaNAcimiento, TipoDocIdentificacion, ");
             sbQuery.Append("NumDocIdentificacion, Celular, Salario  ");
@@ -154,5 +221,31 @@ namespace RH.DataAccessLayer
             return Empleados;
         }
 
+
+        public int AddEmpleado(Empleado empleado)
+        {
+            StringBuilder sbQuery = new StringBuilder();
+            // Esta es la sentencia SQL con le lenguaje de BAse de Datos
+            sbQuery.Append("INSERT INTO Empleados ( ");
+            sbQuery.Append(" Nombres, Apellidos, ");
+            sbQuery.Append("FechaNAcimiento, TipoDocIdentificacion, ");
+            sbQuery.Append("NumDocIdentificacion, Celular, FechaIngreso  ");
+            sbQuery.Append(" ) VALUES ( ");
+            sbQuery.Append("'" + empleado.Nombres + "', ");
+            sbQuery.Append("'" + empleado.Apellidos + "', ");
+            // Esto para guardar la fecha no importa el formato de fecha del PC
+            // sbQuery.Append( empleado.FechaNacimiento.ToOADate() + ", ");
+            sbQuery.Append("'" + empleado.FechaNacimiento.ToString("yyyyMMdd") + "', ");
+            sbQuery.Append(empleado.TipoDocIdentificacion + ", ");
+            sbQuery.Append(empleado.NumDocIdentificacion + ", ");
+            sbQuery.Append(empleado.Celular + ", ");
+            if (empleado.FechaIngreso != null)
+                sbQuery.Append("'" + empleado.FechaIngreso.ToString("yyyyMMdd") + "' ");
+            else
+                sbQuery.Append("'" + DateTime.Now.ToString("yyyyMMdd") + "' ");
+            sbQuery.Append(" ) ");
+
+            return db.AddOrUpdate(sbQuery.ToString());
+        }
     }
 }

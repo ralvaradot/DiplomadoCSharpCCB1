@@ -24,7 +24,16 @@ namespace RH.WindowsApp
         {
             LlenarCiudades();
             LlenarValores();
-         
+            LlenarTiposDocumento();
+        }
+
+        private void LlenarTiposDocumento()
+        {
+            TipoDocumentoBL tipoDOcBl = new TipoDocumentoBL();
+
+            cboTipoDoc.DisplayMember = "TipoDocumento";
+            cboTipoDoc.ValueMember = "TipoDocumentoId";
+            cboTipoDoc.DataSource = tipoDOcBl.GetAllTipoDocumentos();
         }
 
         private void btnEmpleado_Click(object sender, EventArgs e)
@@ -197,6 +206,7 @@ namespace RH.WindowsApp
         {
             LimpiarCampos();
             gbAdicionar.Visible = false;
+            ConfigurarBotonGuardarNuevo();
         }
 
         private void LimpiarCampos()
@@ -210,27 +220,92 @@ namespace RH.WindowsApp
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            // Crear el objeto empleado a Guardar en nuestra Base de datos
             Empleado empleado = new Empleado()
             {
                 Nombres = tbNombre.Text,
                 Apellidos = tbApellidos.Text,
                 Celular = Convert.ToInt64(tbCelular.Text),
                 FechaIngreso = dateTimePicker2.Value,
-                FechaNacimiento = dateTimePicker1.Value
+                FechaNacimiento = dateTimePicker1.Value,
+                NumDocIdentificacion = Convert.ToInt64(tbIdentificacion.Text),
+                TipoDocIdentificacion = Convert.ToInt32(cboTipoDoc.SelectedValue)
             };
 
-            int numeroRegistrosAfectados =  empleadosBL.AdicionarNuevoEmpleado(empleado);
-            if(numeroRegistrosAfectados == 0)
+            int numeroRegistrosAfectados = 0;
+            if (btnGuardar.Text == "Guardar")
+                numeroRegistrosAfectados = empleadosBL.AddNewEmpleado(empleado);
+            else
+            {
+                numeroRegistrosAfectados = empleadosBL.UpdateEmpleado(empleado);
+                ConfigurarBotonGuardarNuevo();
+            }
+            if (numeroRegistrosAfectados == 0)
             {
                 MessageBox.Show("Ocurrio un error y no se pudo adicionar el empleado.");
                 return;
             }
-            empleados = empleadosBL.DevolverListaEmpleados();
+            if (numeroRegistrosAfectados == -1)
+            {
+                MessageBox.Show("Datos invalidos y no se pudo adicionar el empleado.");
+                return;
+            }
+
+
+            // Para llenar la lista de empleados en la pantalla
+            empleados = empleadosBL.EmpleadosDesdeBD();
 
             dgvEmpleados.DataSource = null;
             dgvEmpleados.DataSource = empleados;
 
-            btnCancelar_Click(sender,e);
+            btnCancelar_Click(sender, e);
+        }
+
+        private void ConfigurarBotonGuardarNuevo()
+        {
+            btnGuardar.Text = "Guardar";
+            btnEliminar.Visible = false;
+        }
+
+        private void dgvEmpleados_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Ubicamos la fila de la grilla de la celda selecionada
+            int fila = e.RowIndex;
+            long docIdentificacion = Convert.ToInt64(dgvEmpleados.Rows[fila].Cells[5].Value);
+            Empleado empleado = new Empleado();
+
+            empleado = empleadosBL.FindEmpleadoByIdentity(docIdentificacion);
+
+            // Mostramos la ventana de captura de datos
+            gbAdicionar.Visible = true;
+            btnGuardar.Text = "Actualizar";
+            btnEliminar.Visible = true;
+
+            // Llenamos los datos en la ventana
+            tbNombre.Text = empleado.Nombres;
+            tbApellidos.Text = empleado.Apellidos;
+            tbCelular.Text = empleado.Celular.ToString();
+            dateTimePicker1.Value = empleado.FechaNacimiento;
+            dateTimePicker2.Value = empleado.FechaIngreso;
+            tbIdentificacion.Text = empleado.NumDocIdentificacion.ToString();
+            cboTipoDoc.SelectedItem = empleado.TipoDocIdentificacion;
+
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if(MessageBox.Show("¿Esta Seguro de Eliminar? ","ELIMINAR",MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                empleadosBL.Delete(Convert.ToInt64(tbIdentificacion.Text));
+
+                // Para llenar la lista de empleados en la pantalla
+                empleados = empleadosBL.EmpleadosDesdeBD();
+
+                dgvEmpleados.DataSource = null;
+                dgvEmpleados.DataSource = empleados;
+
+                btnCancelar_Click(sender, e);
+            }
         }
     }
 }

@@ -55,11 +55,6 @@
             this.cboCiudad = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.dgvEmpleados = new System.Windows.Forms.DataGridView();
-            this.Nombres = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Apellidos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Celular = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ciudad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.panCiudad = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -73,6 +68,17 @@
             this.label7 = new System.Windows.Forms.Label();
             this.panCargos = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
+            this.Nombres = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellidos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Celular = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ciudad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NumIdentificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label14 = new System.Windows.Forms.Label();
+            this.cboTipoDoc = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.tbIdentificacion = new System.Windows.Forms.TextBox();
+            this.btnEliminar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panEmpleado.SuspendLayout();
             this.gbAdicionar.SuspendLayout();
@@ -205,7 +211,7 @@
             this.panEmpleado.Controls.Add(this.label1);
             this.panEmpleado.Location = new System.Drawing.Point(209, 24);
             this.panEmpleado.Name = "panEmpleado";
-            this.panEmpleado.Size = new System.Drawing.Size(579, 413);
+            this.panEmpleado.Size = new System.Drawing.Size(579, 436);
             this.panEmpleado.TabIndex = 1;
             this.panEmpleado.Visible = false;
             // 
@@ -213,7 +219,7 @@
             // 
             this.btnAgregar.BackColor = System.Drawing.Color.Blue;
             this.btnAgregar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAgregar.Location = new System.Drawing.Point(468, 238);
+            this.btnAgregar.Location = new System.Drawing.Point(469, 202);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(90, 33);
             this.btnAgregar.TabIndex = 6;
@@ -223,6 +229,11 @@
             // 
             // gbAdicionar
             // 
+            this.gbAdicionar.Controls.Add(this.btnEliminar);
+            this.gbAdicionar.Controls.Add(this.tbIdentificacion);
+            this.gbAdicionar.Controls.Add(this.label15);
+            this.gbAdicionar.Controls.Add(this.cboTipoDoc);
+            this.gbAdicionar.Controls.Add(this.label14);
             this.gbAdicionar.Controls.Add(this.btnCancelar);
             this.gbAdicionar.Controls.Add(this.btnGuardar);
             this.gbAdicionar.Controls.Add(this.dateTimePicker2);
@@ -235,9 +246,9 @@
             this.gbAdicionar.Controls.Add(this.label10);
             this.gbAdicionar.Controls.Add(this.tbNombre);
             this.gbAdicionar.Controls.Add(this.label9);
-            this.gbAdicionar.Location = new System.Drawing.Point(15, 277);
+            this.gbAdicionar.Location = new System.Drawing.Point(15, 241);
             this.gbAdicionar.Name = "gbAdicionar";
-            this.gbAdicionar.Size = new System.Drawing.Size(544, 121);
+            this.gbAdicionar.Size = new System.Drawing.Size(544, 190);
             this.gbAdicionar.TabIndex = 5;
             this.gbAdicionar.TabStop = false;
             this.gbAdicionar.Text = "Adicionar un Empleado";
@@ -247,7 +258,7 @@
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.Red;
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCancelar.Location = new System.Drawing.Point(280, 87);
+            this.btnCancelar.Location = new System.Drawing.Point(290, 155);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(107, 27);
             this.btnCancelar.TabIndex = 11;
@@ -259,7 +270,7 @@
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.ForestGreen;
             this.btnGuardar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnGuardar.Location = new System.Drawing.Point(393, 87);
+            this.btnGuardar.Location = new System.Drawing.Point(403, 155);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(135, 29);
             this.btnGuardar.TabIndex = 10;
@@ -269,7 +280,7 @@
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(63, 97);
+            this.dateTimePicker2.Location = new System.Drawing.Point(88, 84);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker2.TabIndex = 9;
@@ -277,7 +288,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(10, 81);
+            this.label13.Location = new System.Drawing.Point(7, 90);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(75, 13);
             this.label13.TabIndex = 8;
@@ -350,7 +361,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(267, 243);
+            this.comboBox1.Location = new System.Drawing.Point(268, 207);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(183, 21);
             this.comboBox1.TabIndex = 4;
@@ -359,7 +370,7 @@
             // cboCiudad
             // 
             this.cboCiudad.FormattingEnabled = true;
-            this.cboCiudad.Location = new System.Drawing.Point(73, 243);
+            this.cboCiudad.Location = new System.Drawing.Point(74, 207);
             this.cboCiudad.Name = "cboCiudad";
             this.cboCiudad.Size = new System.Drawing.Size(174, 21);
             this.cboCiudad.TabIndex = 3;
@@ -367,7 +378,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 246);
+            this.label8.Location = new System.Drawing.Point(13, 210);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(51, 13);
             this.label8.TabIndex = 2;
@@ -381,41 +392,13 @@
             this.Apellidos,
             this.Celular,
             this.Direccion,
-            this.Ciudad});
-            this.dgvEmpleados.Location = new System.Drawing.Point(15, 49);
+            this.Ciudad,
+            this.NumIdentificacion});
+            this.dgvEmpleados.Location = new System.Drawing.Point(23, 23);
             this.dgvEmpleados.Name = "dgvEmpleados";
             this.dgvEmpleados.Size = new System.Drawing.Size(546, 173);
             this.dgvEmpleados.TabIndex = 1;
-            // 
-            // Nombres
-            // 
-            this.Nombres.DataPropertyName = "Nombres";
-            this.Nombres.HeaderText = "Nombres";
-            this.Nombres.Name = "Nombres";
-            // 
-            // Apellidos
-            // 
-            this.Apellidos.DataPropertyName = "Apellidos";
-            this.Apellidos.HeaderText = "Apellidos";
-            this.Apellidos.Name = "Apellidos";
-            // 
-            // Celular
-            // 
-            this.Celular.DataPropertyName = "Celular";
-            this.Celular.HeaderText = "Celular";
-            this.Celular.Name = "Celular";
-            // 
-            // Direccion
-            // 
-            this.Direccion.DataPropertyName = "FechaNacimiento";
-            this.Direccion.HeaderText = "F. Nacimiento";
-            this.Direccion.Name = "Direccion";
-            // 
-            // Ciudad
-            // 
-            this.Ciudad.DataPropertyName = "FechaIngreso";
-            this.Ciudad.HeaderText = "F. Ingreso";
-            this.Ciudad.Name = "Ciudad";
+            this.dgvEmpleados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmpleados_CellClick);
             // 
             // label1
             // 
@@ -555,11 +538,94 @@
             this.label6.Text = "Cargos";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // Nombres
+            // 
+            this.Nombres.DataPropertyName = "Nombres";
+            this.Nombres.HeaderText = "Nombres";
+            this.Nombres.Name = "Nombres";
+            // 
+            // Apellidos
+            // 
+            this.Apellidos.DataPropertyName = "Apellidos";
+            this.Apellidos.HeaderText = "Apellidos";
+            this.Apellidos.Name = "Apellidos";
+            // 
+            // Celular
+            // 
+            this.Celular.DataPropertyName = "Celular";
+            this.Celular.HeaderText = "Celular";
+            this.Celular.Name = "Celular";
+            // 
+            // Direccion
+            // 
+            this.Direccion.DataPropertyName = "FechaNacimiento";
+            this.Direccion.HeaderText = "F. Nacimiento";
+            this.Direccion.Name = "Direccion";
+            // 
+            // Ciudad
+            // 
+            this.Ciudad.DataPropertyName = "Celular";
+            this.Ciudad.HeaderText = "Celular";
+            this.Ciudad.Name = "Ciudad";
+            // 
+            // NumIdentificacion
+            // 
+            this.NumIdentificacion.DataPropertyName = "NumDocIdentificacion";
+            this.NumIdentificacion.HeaderText = "Numero Identificacion";
+            this.NumIdentificacion.Name = "NumIdentificacion";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(5, 123);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(86, 13);
+            this.label14.TabIndex = 12;
+            this.label14.Text = "Tipo Documento";
+            // 
+            // cboTipoDoc
+            // 
+            this.cboTipoDoc.FormattingEnabled = true;
+            this.cboTipoDoc.Location = new System.Drawing.Point(97, 120);
+            this.cboTipoDoc.Name = "cboTipoDoc";
+            this.cboTipoDoc.Size = new System.Drawing.Size(166, 21);
+            this.cboTipoDoc.TabIndex = 13;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(289, 122);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(59, 13);
+            this.label15.TabIndex = 14;
+            this.label15.Text = "Numero Id.";
+            // 
+            // tbIdentificacion
+            // 
+            this.tbIdentificacion.Location = new System.Drawing.Point(354, 119);
+            this.tbIdentificacion.MaxLength = 10;
+            this.tbIdentificacion.Name = "tbIdentificacion";
+            this.tbIdentificacion.Size = new System.Drawing.Size(174, 20);
+            this.tbIdentificacion.TabIndex = 15;
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.BackColor = System.Drawing.Color.Red;
+            this.btnEliminar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnEliminar.Location = new System.Drawing.Point(167, 155);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(107, 27);
+            this.btnEliminar.TabIndex = 16;
+            this.btnEliminar.Text = "ELIMINAR";
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Visible = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(794, 445);
+            this.ClientSize = new System.Drawing.Size(794, 496);
             this.Controls.Add(this.panCentroCosto);
             this.Controls.Add(this.panGenero);
             this.Controls.Add(this.panEstadoCivil);
@@ -615,11 +681,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cboCiudad;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombres;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Apellidos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Celular;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Direccion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ciudad;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.GroupBox gbAdicionar;
         private System.Windows.Forms.Button btnCancelar;
@@ -634,6 +695,17 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox tbNombre;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombres;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Apellidos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Celular;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Direccion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ciudad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NumIdentificacion;
+        private System.Windows.Forms.TextBox tbIdentificacion;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ComboBox cboTipoDoc;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }
 

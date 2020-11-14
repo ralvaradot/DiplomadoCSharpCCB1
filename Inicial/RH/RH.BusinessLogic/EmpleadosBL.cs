@@ -12,6 +12,8 @@ namespace RH.BusinessLogic
     public class EmpleadosBL
     {
         List<Empleado> empleados = new List<Empleado>();
+        EmpleadosDAL empleadosDAL = new EmpleadosDAL();
+
 
         public EmpleadosBL()
         {
@@ -54,9 +56,57 @@ namespace RH.BusinessLogic
 
         public List<Empleado> EmpleadosDesdeBD()
         {
-            EmpleadosDAL empleadosDAL = new EmpleadosDAL();
-
             return empleadosDAL.GetEmpleados();
+        }
+
+        public int AddNewEmpleado(Empleado empleado)
+        {
+            // Aqui se validan los datos antes de enviarlos a la base de datos
+            if (ValidarEmpleado(empleado) == -1)
+                return -1;
+            
+            int reg = empleadosDAL.AddEmpleado(empleado);
+            return reg;
+        }
+
+        private int ValidarEmpleado(Empleado empleado)
+        {
+            if (string.IsNullOrEmpty(empleado.Nombres))
+                return -1;
+            if (string.IsNullOrEmpty(empleado.Apellidos))
+                return -1;
+            if (empleado.Celular == 0 || empleado.Celular.ToString().Length < 10)
+                return -1;
+            if (empleado.TipoDocIdentificacion == 0)
+                return -1;
+            if (empleado.NumDocIdentificacion == 0)
+                return -1;
+
+            return 0;
+        }
+
+        public Empleado FindEmpleadoByIdentity(long docIdentificacion)
+        {
+            // Validamos
+            if (docIdentificacion > 0)
+                return empleadosDAL.FindEmpleadoByIdentity(docIdentificacion);
+            else
+                return new Empleado();
+        }
+
+        public int UpdateEmpleado(Empleado empleado)
+        {
+            // Aqui se validan los datos antes de enviarlos a la base de datos
+            if (ValidarEmpleado(empleado) == -1)
+                return -1;
+
+            int reg = empleadosDAL.UpdateEmpleado(empleado);
+            return reg;
+        }
+
+        public void Delete(long numeroIdentificacion)
+        {
+            empleadosDAL.DeleteEmpleado(numeroIdentificacion);
         }
     }
 }

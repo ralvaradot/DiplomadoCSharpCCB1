@@ -59,5 +59,18 @@ namespace RH.DataAccessLayer
             return reader;
         }
 
+        public int AddOrUpdate(string query)
+        {
+            int retorno = 0;
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                cmd.Connection = Connection;
+
+                cmd.CommandText = query;
+                cmd.CommandType = System.Data.CommandType.Text;
+                retorno = cmd.ExecuteNonQuery();
+            }
+            return retorno;
+        }
     }
 }
